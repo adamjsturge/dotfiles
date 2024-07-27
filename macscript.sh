@@ -62,7 +62,7 @@ copy_with_backup() {
     local dest="$2"
     if [ -e "$dest" ]; then
         echo "Backing up existing $dest..."
-        mv "$dest" "$backup_folder/$(basename "$dest").$(date +%Y%m%d%H%M%S)"
+        mv "$dest/$source" "$backup_folder/$(basename "$source").$(date +%Y%m%d%H%M%S)"
     fi
     echo "Copying $source to $dest..."
     cp -l "$source" "$dest"
@@ -74,7 +74,7 @@ copy_with_backup .wezterm.lua ~/
 
 if [ -d ~/.config ]; then
     echo "Backing up existing ~/.config..."
-    mv ~/.config "$backup_folder/config.$(date +%Y%m%d%H%M%S)"
+    mv ~/.config "$backup_folder/.config.$(date +%Y%m%d%H%M%S)"
 fi
 echo "Copying .config to ~/"
 cp -r -l .config ~/
