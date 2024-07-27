@@ -55,6 +55,7 @@ install_brew_package sk
 install_brew_package starship
 install_brew_package zsh-autosuggestions
 install_brew_package golang
+install_brew_package node
 
 copy_with_backup() {
     local source="$1"
