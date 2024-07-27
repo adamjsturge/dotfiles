@@ -1,7 +1,7 @@
 eval "$(/opt/homebrew/bin/brew shellenv)"
 source ~/.zshrc
 
-alias edit="sudo nvim ~/.zshrc"
+alias zedit="sudo nvim ~/.zshrc"
 
 #git ammend
 alias gcommit="git commit --amend --no-edit"
