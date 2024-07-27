@@ -18,8 +18,8 @@ else
     echo "Homebrew is already installed."
 fi
 
-# Install oh my zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# # Install oh my zsh
+# sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 install_brew_package() {
     local package_name="$1"
