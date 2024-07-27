@@ -56,6 +56,7 @@ install_brew_package starship
 install_brew_package zsh-autosuggestions
 install_brew_package golang
 install_brew_package node
+install_brew_package zsh-history-substring-search
 
 copy_with_backup() {
     local source="$1"
