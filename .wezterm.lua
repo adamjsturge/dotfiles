@@ -11,6 +11,7 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
+config.default_cwd = wezterm.home_dir .. "/Projects"
 config.color_scheme = "Catppuccin Mocha"
 config.default_domain = is_windows and "WSL:fedora" or nil
 config.default_prog = is_windows and { "wsl.exe" } or nil
@@ -19,4 +20,5 @@ config.font = wezterm.font 'Fira Code'
 config.keys = {
   { key = 'V', mods = 'CTRL', action = act.PasteFrom 'Clipboard' },
 }
+
 return config
