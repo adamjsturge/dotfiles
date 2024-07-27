@@ -1,10 +1,8 @@
 # Setup
 
 ## MacOS
-### Install Font
+Install https://www.docker.com/products/docker-desktop/
+
 ```bash
-brew install font-fira-code
-brew install sk
-brew install starship
-brew install zsh-autosuggestions
+./macscript.sh
 ```
