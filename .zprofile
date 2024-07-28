@@ -1,5 +1,6 @@
 eval "$(/opt/homebrew/bin/brew shellenv)"
 source ~/.zshrc
+source <(docker completion zsh)
 
 alias zedit="sudo nvim ~/.zshrc"
 

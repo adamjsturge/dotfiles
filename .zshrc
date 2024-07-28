@@ -1,6 +1,5 @@
 export SKIM_DEFAULT_OPTIONS="--tiebreak=score,index"
 export ZSH_AUTOSUGGEST_HISTORY_IGNORE="cd *|?(#c50,)"
-
 # source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # source /opt/homebrew/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 
@@ -65,6 +64,8 @@ zstyle ':completion:*' list-suffixes true
 zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[._-]=** r:|=**' 'l:|=* r:|=*'
 zstyle ':completion:*' menu select=1
 zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s'
+zstyle ':completion:*:*:docker:*' option-stacking yes
+zstyle ':completion:*:*:docker-*:*' option-stacking yes
 
 autoload -Uz compinit
 compinit
@@ -94,5 +95,3 @@ compdef _gnu_generic delta
 # fi
 # unset __conda_setup
 # # <<< conda initialize <<<
-
-autoload -U +X bashcompinit && bashcompinit
