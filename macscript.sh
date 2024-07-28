@@ -91,21 +91,20 @@ install_packages() {
     install_brew_package awscli
 
     if ! (brew_package_exists burp-suite || brew_package_exists burp-suite-professional); then
-        echo "1. Burp Community Edition (Free)"
-        echo "2. Burp Suite Professional (Paid)"
-        read -p "Which Burp Suite would you like to install? (1/2): " burp_choice
-
-        if [ "$burp_choice" = "1" ]; then
-            install_brew_package --cask burp-suite
-        elif [ "$burp_choice" = "2" ]; then
+        echo "Burp Suite Community Edition will be installed in 5 seconds."
+        echo "Press Enter to install Burp Suite Professional instead."
+        
+        if read -t 5 -s; then
             install_brew_package --cask burp-suite-professional
+            echo "Installing Burp Suite Professional..."
         else
-            echo "Invalid choice. Skipping Burp Suite installation."
+            install_brew_package --cask burp-suite
+            echo "Installing Burp Suite Community Edition..."
         fi
     else
         echo "Burp Suite is already installed."
     fi
-    
+        
 
 }
 
