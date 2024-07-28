@@ -39,16 +39,17 @@ install_packages() {
         fi
     }
 
+    install_brew_package antigen
     install_brew_package --cask wezterm
     install_brew_package --cask visual-studio-code
     install_brew_package neovim
     install_brew_package font-fira-code
     install_brew_package sk
     install_brew_package starship
-    install_brew_package zsh-autosuggestions
     install_brew_package golang
     install_brew_package node
-    install_brew_package zsh-history-substring-search
+    # install_brew_package zsh-history-substring-search
+    # install_brew_package zsh-autosuggestions
 }
 
 move_dotfiles() {
