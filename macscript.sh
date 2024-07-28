@@ -17,7 +17,7 @@ brew_package_exists() {
             ;;
     esac
 
-    brew list "$1" &>/dev/null || command -v "$package_command" >/dev/null 2>&1
+    brew list "$1" &>/dev/null || command_exists "$package_command" || application_exists "$package_command"
 }
 
 application_exists() {
@@ -72,6 +72,10 @@ install_packages() {
     install_brew_package antigen
     install_brew_package --cask wezterm
     install_brew_package --cask visual-studio-code
+    install_brew_package --cask brave-browser
+    install_brew_package --cask firefox
+    install_brew_package --cask discord
+    install_brew_package --cask obsidian
     install_brew_package neovim
     install_brew_package font-fira-code
     install_brew_package sk
@@ -82,8 +86,11 @@ install_packages() {
     install_brew_package kubectl
     install_brew_package helm
     install_brew_package k9s
+    install_brew_package rust
+    install_brew_package terraform
+    install_brew_package awscli
 
-    if ! (brew_package_exists burp-suite || brew_package_exists burp-suite-professional || application_exists burp-suite || application_exists burp-suite-professional); then
+    if ! (brew_package_exists burp-suite || brew_package_exists burp-suite-professional); then
         echo "1. Burp Community Edition (Free)"
         echo "2. Burp Suite Professional (Paid)"
         read -p "Which Burp Suite would you like to install? (1/2): " burp_choice
