@@ -16,6 +16,8 @@ brew_packages=(
     terraform
     awscli
     imagemagick
+    htop
+    jq
 )
 
 brew_cask_packages=(
