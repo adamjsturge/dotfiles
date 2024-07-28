@@ -4,6 +4,36 @@ command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
 
+brew_package_exists() {
+    case $1 in
+        visual-studio-code)
+            package_command="code"
+            ;;
+        neovim)
+            package_command="nvim"
+            ;;
+        *)
+            package_command="$1"
+            ;;
+    esac
+
+    brew list "$1" &>/dev/null || command -v "$package_command" >/dev/null 2>&1
+}
+
+application_exists() {
+    if [ $# -eq 0 ]; then
+        return 1
+    fi
+
+    app_name=$(echo "$1" | sed 's/[-_]/ /g')
+    
+    if mdfind "kMDItemKind == 'Application'" | grep -qi "${app_name}.app"; then
+        return 0
+    fi
+
+    return 1
+}
+
 install_packages() {
     if ! command_exists brew; then
         echo "Installing Homebrew..."
@@ -23,14 +53,14 @@ install_packages() {
         fi
 
         if $is_cask; then
-            if ! brew list --cask "$package_name" &>/dev/null; then
+            if ! brew_package_exists $package_name; then
                 echo "Installing cask $package_name..."
                 brew install --cask "$package_name"
             else
-                echo "Cask $package_name is already installed."
+                echo "$package_name is already installed."
             fi
         else
-            if ! brew list "$package_name" &>/dev/null; then
+            if ! brew_package_exists $package_name; then
                 echo "Installing $package_name..."
                 brew install "$package_name"
             else
@@ -48,8 +78,28 @@ install_packages() {
     install_brew_package starship
     install_brew_package golang
     install_brew_package node
-    # install_brew_package zsh-history-substring-search
-    # install_brew_package zsh-autosuggestions
+    install_brew_package docker
+    install_brew_package kubectl
+    install_brew_package helm
+    install_brew_package k9s
+
+    if ! (brew_package_exists burp-suite || brew_package_exists burp-suite-professional || application_exists burp-suite || application_exists burp-suite-professional); then
+        echo "1. Burp Community Edition (Free)"
+        echo "2. Burp Suite Professional (Paid)"
+        read -p "Which Burp Suite would you like to install? (1/2): " burp_choice
+
+        if [ "$burp_choice" = "1" ]; then
+            install_brew_package --cask burp-suite
+        elif [ "$burp_choice" = "2" ]; then
+            install_brew_package --cask burp-suite-professional
+        else
+            echo "Invalid choice. Skipping Burp Suite installation."
+        fi
+    else
+        echo "Burp Suite is already installed."
+    fi
+    
+
 }
 
 move_dotfiles() {
