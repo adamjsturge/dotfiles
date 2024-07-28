@@ -89,6 +89,7 @@ install_packages() {
     install_brew_package rust
     install_brew_package terraform
     install_brew_package awscli
+    install_brew_package imagemagick
 
     if ! (brew_package_exists burp-suite || brew_package_exists burp-suite-professional); then
         echo "Burp Suite Community Edition will be installed in 5 seconds."
