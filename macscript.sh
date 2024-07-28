@@ -1,5 +1,39 @@
 #!/bin/bash
 
+brew_packages=(
+    antigen
+    neovim
+    font-fira-code
+    sk
+    starship
+    golang
+    nvm
+    docker
+    kubectl
+    helm
+    k9s
+    rust
+    terraform
+    awscli
+    imagemagick
+)
+
+brew_cask_packages=(
+    wezterm
+    visual-studio-code
+    brave-browser
+    firefox
+    discord
+    obsidian
+    rectangle
+    cyberduck
+    wireshark
+    signal
+    vlc
+    spotify
+    obs
+)
+
 command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
@@ -44,52 +78,34 @@ install_packages() {
     fi
 
     install_brew_package() {
-        local package_name="$1"
         local is_cask=false
+        local package_name
 
         if [ "$1" = "--cask" ]; then
             is_cask=true
             package_name="$2"
+        else
+            package_name="$1"
         fi
 
-        if $is_cask; then
-            if ! brew_package_exists $package_name; then
-                echo "Installing cask $package_name..."
-                brew install --cask "$package_name"
-            else
-                echo "$package_name is already installed."
-            fi
+        local install_cmd=$([ "$is_cask" = true ] && echo "brew install --cask" || echo "brew install")
+
+        if ! brew_package_exists $package_name; then
+            echo "Installing $package_name..."
+            $install_cmd "$package_name"
         else
-            if ! brew_package_exists $package_name; then
-                echo "Installing $package_name..."
-                brew install "$package_name"
-            else
-                echo "$package_name is already installed."
-            fi
+            echo "$package_name is already installed."
         fi
     }
 
-    install_brew_package antigen
-    install_brew_package --cask wezterm
-    install_brew_package --cask visual-studio-code
-    install_brew_package --cask brave-browser
-    install_brew_package --cask firefox
-    install_brew_package --cask discord
-    install_brew_package --cask obsidian
-    install_brew_package neovim
-    install_brew_package font-fira-code
-    install_brew_package sk
-    install_brew_package starship
-    install_brew_package golang
-    install_brew_package node
-    install_brew_package docker
-    install_brew_package kubectl
-    install_brew_package helm
-    install_brew_package k9s
-    install_brew_package rust
-    install_brew_package terraform
-    install_brew_package awscli
-    install_brew_package imagemagick
+    for package in "${brew_packages[@]}"; do
+        install_brew_package "$package"
+    done
+
+    # Install cask packages
+    for package in "${brew_cask_packages[@]}"; do
+        install_brew_package --cask "$package"
+    done
 
     if ! (brew_package_exists burp-suite || brew_package_exists burp-suite-professional); then
         echo "Burp Suite Community Edition will be installed in 5 seconds."
