@@ -95,3 +95,5 @@ compdef _gnu_generic delta
 # fi
 # unset __conda_setup
 # # <<< conda initialize <<<
+
+autoload -U +X bashcompinit && bashcompinit
