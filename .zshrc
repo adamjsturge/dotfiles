@@ -1,5 +1,6 @@
 export SKIM_DEFAULT_OPTIONS="--tiebreak=score,index"
 export ZSH_AUTOSUGGEST_HISTORY_IGNORE="cd *|?(#c50,)"
+export PATH="$PATH:$HOME/.composer/vendor/bin"
 # source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # source /opt/homebrew/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 

@@ -18,6 +18,8 @@ brew_packages=(
     imagemagick
     htop
     jq
+    php
+    composer
 )
 
 brew_cask_packages=(
@@ -34,6 +36,7 @@ brew_cask_packages=(
     vlc
     spotify
     obs
+    herd
 )
 
 command_exists() {
@@ -123,8 +126,10 @@ install_packages() {
     else
         echo "Burp Suite is already installed."
     fi
-        
-
+    
+    source ~/.zshrc
+    composer global require laravel/installer
+    source ~/.zshrc
 }
 
 move_dotfiles() {
