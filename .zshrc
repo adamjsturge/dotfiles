@@ -1,6 +1,7 @@
 export SKIM_DEFAULT_OPTIONS="--tiebreak=score,index"
 export ZSH_AUTOSUGGEST_HISTORY_IGNORE="cd *|?(#c50,)"
 export PATH="$PATH:$HOME/.composer/vendor/bin"
+export PATH="$PATH:$HOME/go/bin"
 # source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # source /opt/homebrew/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 
@@ -98,3 +99,16 @@ compdef _gnu_generic delta
 # # <<< conda initialize <<<
 
 autoload -U +X bashcompinit && bashcompinit
+
+# Herd injected NVM configuration
+export NVM_DIR="$HOME/Library/Application Support/Herd/config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+[[ -f "/Applications/Herd.app/Contents/Resources/config/shell/zshrc.zsh" ]] && builtin source "/Applications/Herd.app/Contents/Resources/config/shell/zshrc.zsh"
+
+# Herd injected PHP 8.3 configuration.
+export HERD_PHP_83_INI_SCAN_DIR="$HOME/Library/Application Support/Herd/config/php/83/"
+
+
+# Herd injected PHP binary.
+export PATH="$HOME/Library/Application Support/Herd/bin/":$PATH

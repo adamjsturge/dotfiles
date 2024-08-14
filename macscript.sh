@@ -20,6 +20,8 @@ brew_packages=(
     jq
     php
     composer
+    mailpit
+    k6
 )
 
 brew_cask_packages=(
@@ -37,6 +39,8 @@ brew_cask_packages=(
     spotify
     obs
     herd
+    dbngin
+    tableplus
 )
 
 command_exists() {
@@ -127,9 +131,9 @@ install_packages() {
         echo "Burp Suite is already installed."
     fi
     
-    source ~/.zshrc
+    source ~/.zprofile
     composer global require laravel/installer
-    source ~/.zshrc
+    source ~/.zprofile
 }
 
 move_dotfiles() {
