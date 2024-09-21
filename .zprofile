@@ -7,6 +7,8 @@ alias zedit="sudo nvim ~/.zshrc"
 #git ammend
 alias gcommit="git commit --amend --no-edit"
 
+alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
+
 gpush(){
 gsafe
 fpush $(git rev-parse --abbrev-ref HEAD)
