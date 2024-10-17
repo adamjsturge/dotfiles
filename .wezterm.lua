@@ -13,7 +13,7 @@ end
 
 config.default_cwd = wezterm.home_dir .. "/Projects"
 config.color_scheme = "Catppuccin Mocha"
-config.default_domain = is_windows and "WSL:fedora" or nil
+config.default_domain = is_windows and "WSL:fedoraremix" or nil
 config.default_prog = is_windows and { "wsl.exe" } or nil
 config.enable_tab_bar = false
 config.font = wezterm.font 'Fira Code'
