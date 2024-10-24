@@ -22,6 +22,7 @@ brew_packages=(
     composer
     mailpit
     k6
+    gnupg
 )
 
 brew_cask_packages=(
@@ -41,6 +42,7 @@ brew_cask_packages=(
     herd
     dbngin
     tableplus
+    gpg-suite
 )
 
 command_exists() {
