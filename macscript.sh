@@ -43,6 +43,7 @@ brew_cask_packages=(
     dbngin
     tableplus
     gpg-suite
+    dangerzone
 )
 
 command_exists() {
