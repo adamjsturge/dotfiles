@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 export SKIM_DEFAULT_OPTIONS="--tiebreak=score,index"
 export ZSH_AUTOSUGGEST_HISTORY_IGNORE="cd *|?(#c50,)"
 export PATH="$PATH:$HOME/.composer/vendor/bin"
